@@ -3,7 +3,7 @@ session_start();
 
 // Hardcoded credentials for demonstration
 const USERNAME = 'admin';
-const PASSWORD = 'password';
+const PASSWORD = 'Pass_0123';
 
 // Max login attempts
 const MAX_ATTEMPTS = 3;
@@ -37,19 +37,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Brute Force Demo - Most Secure Shop Ever</title>
+    <title>Admin Login - Most Secure Shop Ever</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Brute Force Login Demonstration</h1>
-    <?php if ($_SESSION['login_attempts'] < MAX_ATTEMPTS): ?>
-        <form method="post" action="bruteforce.php">
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username"><br>
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password"><br><br>
-            <button type="submit">Login</button>
-        </form>
-    <?php endif; ?>
-    <p><?= $message ?></p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.php">Secure Shop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="search.php">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="admin_login.php">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="files.php">Files</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Admin Login</h1>
+        <?php if ($_SESSION['login_attempts'] < MAX_ATTEMPTS): ?>
+            <form method="post" action="admin_login.php">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        <?php else: ?>
+            <p class="alert alert-danger">Account locked due to too many failed login attempts.</p>
+        <?php endif; ?>
+        <?php if ($message): ?>
+            <p class="alert alert-warning"><?= $message ?></p>
+        <?php endif; ?>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 // Connection to the database
-$mysqli = new mysqli("db", "root", "root", "secure_shop");
+$mysqli = new mysqli("db", "root", "Admin_0123", "secure_shop");
 
 // Check connection
 if ($mysqli->connect_errno) {
@@ -27,9 +27,28 @@ $query = "SELECT name, description, price FROM items WHERE name = '$search';";
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.php">Secure Shop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="search.php">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="admin_login.php">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="files.php">Files</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
         <h1 class="mt-5 mb-3">Search Results</h1>
-        <form action="sql.php" method="GET" class="mb-4">
+        <form action="search.php" method="GET" class="mb-4">
             <div class="form-group">
                 <input type="text" class="form-control" name="search" placeholder="Search for items..." value="<?= htmlspecialchars($search) ?>">
             </div>

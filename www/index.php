@@ -1,6 +1,6 @@
 <?php
 // Connection to the database
-$mysqli = new mysqli("db", "root", "root", "secure_shop");
+$mysqli = new mysqli("db", "root", "Admin_0123", "secure_shop");
 
 // Check connection
 if ($mysqli->connect_errno) {
@@ -36,7 +36,7 @@ $result = $mysqli->query("SELECT * FROM items");
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="sql.php">Search</a>
+                    <a class="nav-link" href="search.php">Search</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="admin_login.php">Login</a>

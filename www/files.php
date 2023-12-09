@@ -32,7 +32,7 @@ if (isset($_POST['filename']) || isset($_SESSION['filename'])) {
 
     // Sanitize file path if required
     if ($sanitize) {
-        $filename = preg_replace('/[^a-zA-Z0-9.]/', '', $filename);
+        $filename = preg_replace('/[^a-zA-Z0-9]/', '', $filename);
     }
 
     // Build the full file path
@@ -67,6 +67,25 @@ if (isset($_POST['clear'])) {
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.php">Secure Shop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="search.php">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="admin_login.php">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="files.php">Files</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container mt-5">
         <h1 class="mb-4">Directory Traversal Demonstration</h1>
 
@@ -77,7 +96,7 @@ if (isset($_POST['clear'])) {
             <?php endforeach; ?>
         </ul>
 
-        <form method="post" action="directory.php" class="mb-3">
+        <form method="post" action="files.php" class="mb-3">
             <div class="form-group">
                 <input type="text" class="form-control" name="filename" placeholder="Enter filename" value="<?= htmlspecialchars($_SESSION['filename'] ?? '') ?>">
             </div>
