@@ -8,7 +8,6 @@ This project is an educational tool designed to showcase various attack and defe
 2. [Cross-Site Scripting (XSS)](#cross-site-scripting-xss)
 3. [Directory Traversal](#directory-traversal)
 4. [Brute-Force Attacks](#brute-force-attacks)
-5. [DDoS Attack Simulation and Network Layer Protection](#ddos-attack-simulation-and-network-layer-protection)
 
 ### SQL Injection
 - **File**: `search.php`
